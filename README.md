@@ -1,12 +1,12 @@
 # Student Score Test Predicted
-To predict student score test (post-test score) in the future.
+To predict student score test (post-test score) in following time.
 
 ### About 
 
 The project goal is to get external insight that can potentially affect students' performance on the test results, and if it does, what can we predict based on these results.
 
 ## Student Score Test
-Student Post-test score is a score test that students get after the learning process has been completed. A post-test is a form of the final evaluation of a lesson.
+Student score test (post-test score) is a score test that students get after the learning process has been completed. A post-test is a form of the final evaluation of a lesson.
 
 ## Data Understanding
 
@@ -61,11 +61,12 @@ when we add in all other variables in a multiple regression, we conclude that sc
  
    
 ### 5. Compare Multiple Model
-   Evaluate the model on test data using Explained Variance and MAE
-   
-The model with Mean Absolute Error (MAE) value is 2624.7 and the Mean Absolute Percentage Error (MAPE) value is 0.1160156. 
-On averange, our prediction deviates the true Premium Price by 2624.7. Moreover, this 2624.7 is equivalent to 12% deviation relative to the true Premium Price.
+- Lasso Regression          : Explained Variance: 92.55%, MAE: 3.04
+- Decision Tree Regression  : Explained Variance: 92.20%, MAE: 3.07
+- Support Vector Regression : Explained Variance: 91.11%, MAE: 3.36
+- Random Forest Regression  : Explained Variance: 94.24%, MAE: 2.65
+- Neural Network Regression : Explained Variance: 94.70%, MAE: 2.89
 
 # Summary
 
-Based on the linear regression model, the Mean Absolute Error (MAE) value is 2624.7 and the Mean Absolute Percentage Error (MAPE) value is 0.1160156. On averange, our prediction deviates the true Premium Price by 2624.7. Moreover, this 2624.7 is equivalent to 12% deviation relative to the true Premium Price.The MAPE value is 12% indicates that the prediction results are accurate and can be used to estimate premium prices in the following year. 
+According to 6 models above, Linear Regression model has the highest Explained Variance: 94.76% and the smallest MAE: 2.52, that the prediction results are accurate and can be used to estimate student score test in following time.
