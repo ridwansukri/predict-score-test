@@ -27,41 +27,41 @@ This dataset contains the background of the students and the test results obtain
 *   **lunch** - Whether a student qualifies for free/subsidized lunch or not.
 *   **pretest** - The pretest score of the students out of 100
 
-## Data preparation
-•	Code Used : Python (Google Colab Studio)
-
-•	Packages : caTools, ggplot2
-
 ## Modeling Flow : 
-### 1. Split Data : train – test
-   Split data into training data and testing data
-### 2. Fit the model on training data
-   Build and train the model on the training data using lm() function
-### 3. Model Diagnostic
+
+### 1. Data Preparation
+
+ We use Google Colab to build the student's score prediction model. First, we explore the data, find missing and duplicate values, and then drop a few columns that do not affect to our model. Last, we do categorical encoding and find correlation between variables.
+ 
+ ![image](https://beeimg.com/images/u76128354922.png)
+ 
+We can see there is a really good correlation between pre-test scores and post-test scores. We don't find any multicollinearity
+ 
+### 2. Split Data
+ Split data into training data and testing data:
+ 
+Training data : 70%
+Testing data : 30%
+ 
+### 3. Build Model on Training Data
   
  Interpret and pre-evaluate the model
   
- -Model's Summary
+ - Pre-evaluate model
  
-![image](https://user-images.githubusercontent.com/88583319/129440584-9391de80-0c4b-4f73-9e97-683233343626.png)
+![image](https://beeimg.com/images/i28440240472.png)
 
-  The model with an adjusted R-square value of 0.6225. The adjusted R-square value indicates that 62.25% total variation of PremiumPrice can be explained by all the features.
+we see the R-squared is 0.904. Meaning, pre-test scores explain 90,4% of the variability in post-test scores using OLS Regression Results.
   
- - Model's Residual Diagnostic
+![image](https://beeimg.com/images/g18245817892.png)
+when we add in all other variables in a multiple regression, we conclude that school type & gender are not a very good predictors of post-test score based on their p-values that indicate a weak association. We drop them to our model. And then, we create Linear Regression.
     
-   • 	Residual Plot
+### 4. Evaluate the Model
+   Evaluate the model on test data using Explained Variance and MAE. We get 94.76% of Explained Variance and MAE value is 2.52
+ 
    
-![image](https://user-images.githubusercontent.com/88583319/129440603-39c9c9ee-a2f0-4d4c-9805-05f95f4518a9.png)
-   
- The model diagnostic plots above show that the linear regression model fits the data well. There is a straight-line relationship between the residual and the fitted_value, residuals have a constant variance, and residuals are normally distributed.
-    
-### 4. Predict Data
-   Using the trained model to predict test data using predict()
-   
-![image](https://user-images.githubusercontent.com/88583319/129440630-6fda68ca-bba6-4ad7-8c16-a02f67c27ccb.png)
-   
-### 5. Evaluate The Model
-   Evaluate the model on test data using MAE and MAPE
+### 5. Compare Multiple Model
+   Evaluate the model on test data using Explained Variance and MAE
    
 The model with Mean Absolute Error (MAE) value is 2624.7 and the Mean Absolute Percentage Error (MAPE) value is 0.1160156. 
 On averange, our prediction deviates the true Premium Price by 2624.7. Moreover, this 2624.7 is equivalent to 12% deviation relative to the true Premium Price.
